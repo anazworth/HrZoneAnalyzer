@@ -7,5 +7,11 @@ pipeline {
       }
     }
 
+    stage('bun install') {
+      steps {
+        sh 'bun install'
+      }
+    }
+
   }
 }
