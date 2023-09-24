@@ -13,5 +13,11 @@ pipeline {
       }
     }
 
+    stage('bun test') {
+      steps {
+        sh 'bun test'
+      }
+    }
+
   }
 }
