@@ -24,9 +24,9 @@ pipeline {
       }
     }
 
-    stage('') {
+    stage('Publish') {
       steps {
-        publishChecks(title: 'Bun tests', text: 'text', summary: 'completed bun tests')
+        publishChecks(title: 'Bun tests', text: 'text', summary: 'completed bun tests', conclusion: 'SUCCESS', status: 'COMPLETED')
       }
     }
 
