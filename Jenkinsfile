@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       image 'ubuntu'
-      args '-u 0'
+      args '/bin/bash'
     }
 
   }
