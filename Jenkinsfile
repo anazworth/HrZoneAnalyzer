@@ -6,12 +6,6 @@ pipeline {
 
   }
   stages {
-    stage('Checkout Code') {
-      steps {
-        git(url: 'https://github.com/anazworth/HrZoneAnalyzer', branch: 'main')
-      }
-    }
-
     stage('Bun Deps') {
       steps {
         sh 'bun install --no-save'
