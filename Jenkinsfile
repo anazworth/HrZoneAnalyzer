@@ -7,20 +7,9 @@ pipeline {
 
   }
   stages {
-    stage('Checkout Code') {
-      parallel {
-        stage('Checkout Code') {
-          steps {
-            git(url: 'https://github.com/anazworth/HrZoneAnalyzer', branch: 'main')
-          }
-        }
-
-        stage('Install curl') {
-          steps {
-            sh 'apt-get -y update && apt-get -y install curl unzip'
-          }
-        }
-
+    stage('Install curl') {
+      steps {
+        sh 'apt-get -y update && apt-get -y install curl unzip'
       }
     }
 
@@ -30,13 +19,19 @@ pipeline {
       }
     }
 
-    stage('Install bun dependencies') {
+    stage('Checkout Code') {
+      steps {
+        git(url: 'https://github.com/anazworth/HrZoneAnalyzer', branch: 'main')
+      }
+    }
+
+    stage('Bun Deps') {
       steps {
         sh 'bun install'
       }
     }
 
-    stage('Run Tests') {
+    stage('bun tests') {
       steps {
         sh 'bun test'
       }
