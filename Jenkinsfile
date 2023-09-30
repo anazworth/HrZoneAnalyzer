@@ -27,7 +27,7 @@ pipeline {
 
     stage('Bun Deps') {
       steps {
-        sh 'bun install'
+        sh '~/.bun/bin/bun install'
       }
     }
 
