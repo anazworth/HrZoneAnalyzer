@@ -16,7 +16,7 @@ pipeline {
 
         stage('Install curl') {
           steps {
-            sh 'apt install curl'
+            sh 'sudo apt install curl'
           }
         }
 
