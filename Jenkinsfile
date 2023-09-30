@@ -1,37 +1,14 @@
 pipeline {
   agent {
     docker {
-      image 'ubuntu'
+      image 'oven/bun'
     }
 
   }
   stages {
-    stage('Install curl') {
-      steps {
-        sh 'apt -y update && apt-get -y install curl unzip'
-      }
-    }
-
-    stage('Install Bun runtime') {
-      steps {
-        sh 'curl -fsSL https://bun.sh/install | bash'
-      }
-    }
-
     stage('Checkout Code') {
-      parallel {
-        stage('Checkout Code') {
-          steps {
-            git(url: 'https://github.com/anazworth/HrZoneAnalyzer', branch: 'main')
-          }
-        }
-
-        stage('alias bun') {
-          steps {
-            sh 'alias bun=~/.bun/bin/bun'
-          }
-        }
-
+      steps {
+        git(url: 'https://github.com/anazworth/HrZoneAnalyzer', branch: 'main')
       }
     }
 
