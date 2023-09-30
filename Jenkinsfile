@@ -7,8 +7,19 @@ pipeline {
   }
   stages {
     stage('Checkout Code') {
-      steps {
-        git(url: 'https://github.com/anazworth/HrZoneAnalyzer', branch: 'main')
+      parallel {
+        stage('Checkout Code') {
+          steps {
+            git(url: 'https://github.com/anazworth/HrZoneAnalyzer', branch: 'main')
+          }
+        }
+
+        stage('Install bun runtime') {
+          steps {
+            sh 'curl -fsSL https://bun.sh/install | bash'
+          }
+        }
+
       }
     }
 
