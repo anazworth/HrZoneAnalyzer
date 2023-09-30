@@ -1,14 +1,14 @@
 pipeline {
   agent {
     docker {
-      image 'debian'
+      image 'ubuntu'
     }
 
   }
   stages {
     stage('Install curl') {
       steps {
-        sh 'apt-get -y update && apt-get -y install curl unzip'
+        sh 'apt -y update && apt-get -y install curl unzip'
       }
     }
 
