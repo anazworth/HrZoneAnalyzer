@@ -24,5 +24,11 @@ pipeline {
       }
     }
 
+    stage('') {
+      steps {
+        publishChecks(title: 'Bun tests', text: 'text', summary: 'completed bun tests')
+      }
+    }
+
   }
 }
