@@ -14,7 +14,7 @@ pipeline {
 
     stage('Bun Deps') {
       steps {
-        sh 'bun install'
+        sh 'bun install --no-save'
       }
     }
 
