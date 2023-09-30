@@ -20,14 +20,25 @@ pipeline {
     }
 
     stage('Checkout Code') {
-      steps {
-        git(url: 'https://github.com/anazworth/HrZoneAnalyzer', branch: 'main')
+      parallel {
+        stage('Checkout Code') {
+          steps {
+            git(url: 'https://github.com/anazworth/HrZoneAnalyzer', branch: 'main')
+          }
+        }
+
+        stage('alias bun') {
+          steps {
+            sh 'alias bun=~/.bun/bin/bun'
+          }
+        }
+
       }
     }
 
     stage('Bun Deps') {
       steps {
-        sh '~/.bun/bin/bun install'
+        sh 'bun install'
       }
     }
 
