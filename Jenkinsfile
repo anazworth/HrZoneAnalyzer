@@ -17,7 +17,7 @@ pipeline {
 
         stage('Install curl') {
           steps {
-            sh 'apt-get -y update && apt-get -y install curl'
+            sh 'apt-get -y update && apt-get -y install curl unzip'
           }
         }
 
