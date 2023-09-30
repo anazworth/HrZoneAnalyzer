@@ -14,22 +14,28 @@ pipeline {
           }
         }
 
-        stage('Install bun runtime') {
+        stage('Install curl') {
           steps {
-            sh 'curl -fsSL https://bun.sh/install | bash'
+            sh 'apt install curl'
           }
         }
 
       }
     }
 
-    stage('bun install') {
+    stage('Install Bun runtime') {
+      steps {
+        sh 'curl -fsSL https://bun.sh/install | bash'
+      }
+    }
+
+    stage('Install bun dependencies') {
       steps {
         sh 'bun install'
       }
     }
 
-    stage('bun test') {
+    stage('Run Tests') {
       steps {
         sh 'bun test'
       }
